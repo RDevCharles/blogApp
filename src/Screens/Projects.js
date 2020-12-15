@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, View } from 'react-native';
+import {ScrollView, View, TouchableOpacity } from 'react-native';
 import Card from '../Components/Card';
 import { Text } from 'galio-framework';
 import {db} from '../firebase/firebase';
@@ -7,7 +7,7 @@ import {db} from '../firebase/firebase';
 
 
 
-const Projects = () => {
+const Projects = props => {
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
@@ -31,9 +31,18 @@ const Projects = () => {
                
                 {videos.map(video => {
                     return (
+                        <TouchableOpacity key ={video.id} onPress={() => {
+                            props.navigation.navigate("Video", {
+                                videoText: `${video.article}`,
+                                videoSource: `${video.clip}`,
+                                videoSummary:`${video.title}`
+                              })
+                            
+                        }}>
                         <Card key={video.id}
                         title={video.title}
-                        image={video.thumbnail}/>
+                                image={video.thumbnail} />
+                            </TouchableOpacity>
                     )
                 })}
         </View>
