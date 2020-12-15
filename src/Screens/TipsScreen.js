@@ -3,7 +3,7 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import Card from '../Components/Card';
 import { useNavigation } from "@react-navigation/native";
 import { db } from '../firebase/firebase';
-
+import MiniCard from '../Components/MiniCard';
 
 const TipsScreen = () => {
 
@@ -32,8 +32,8 @@ const TipsScreen = () => {
                             articleImage: `${tip.image}`,
                             articleSummary:`${tip.summary }`
                           })}>
-                        <Card
-                            image={tip.image}
+                        <MiniCard
+                           
                                 title={tip.summary} />
                             </TouchableOpacity>)
                 })}

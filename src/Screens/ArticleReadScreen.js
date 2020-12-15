@@ -7,43 +7,62 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Button,
   Share
 } from "react-native";
+import { Button } from "galio-framework";
 
 const ArticleReadPage = ({ route, navigation }) => {
-    const { articleText, articleImage, articleSummary } = route.params;
-    const Link =  `${articleText}`
-  
+  const { articleText, articleImage, articleSummary } = route.params;
+  const Link = `${articleText}`;
+
   return (
     <SafeAreaView>
-      <ScrollView style={{ backgroundColor: "white", height: "100%" }}>
-        <Text style={{ color: "white", marginTop: 20 }}>{articleSummary}</Text>
+      <View style={{ backgroundColor: "white", height: "100%" }}>
         <Image
           style={{
             width: "100%",
-            height: 250,
-            marginTop: 20
+            height: 250
           }}
           source={{ uri: `${articleImage}` }}
         />
-        <View style={{ flexDirection: "row", marginTop: 20 }}>
+        <View style={{ flexDirection: "row" }}>
           <TouchableOpacity style={{ marginLeft: 10 }}></TouchableOpacity>
         </View>
 
         <Text style={styles.articleText}>{articleSummary}</Text>
-
-        <Text style={{ padding: 20 }}>{articleText}</Text>
-        <Button
-          onPress={async function() {
-            await Share.share({
-              message: Link
-            });
+        <ScrollView style={{ backgroundColor: "white" }}>
+          <Text style={{ padding: 20 }}>{articleText}</Text>
+        </ScrollView>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center"
           }}
-          title="Share"
-        />
-        <Button title="Like"></Button>
-      </ScrollView>
+        >
+          <Button
+            style={{ marginTop: 20 }}
+            color="#6441A5"
+            onPress={async function() {
+              await Share.share({
+                message: Link
+              });
+            }}
+          >
+            Share
+          </Button>
+
+          <Button
+            style={{ marginTop: 20 }}
+            color="#6441A5"
+            onPress={() => {
+              Linking.openURL("https://twitter.com/RondellsArt");
+            }}
+          >
+            Like
+          </Button>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };
@@ -51,7 +70,8 @@ const ArticleReadPage = ({ route, navigation }) => {
 styles = StyleSheet.create({
   articleContainer: {
     backgroundColor: "white",
-    height: "100%"
+        height: "100%",
+    color:'white'
   },
 
   articleText: {

@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView, Text, Share, Button, ScrollView } from "react-native";
-import { Accordion, Block } from 'galio-framework';
+import { StyleSheet, View, SafeAreaView, Text, Share, ScrollView } from "react-native";
+import { Button } from "galio-framework";
 import { Audio, Video } from "expo-av";
-import { white } from "color-name";
+
 
 const VideoPlayScreen = ({ route, navigation }) => {
     const { videoText, videoSource, videoSummary } = route.params;
@@ -32,16 +32,32 @@ const VideoPlayScreen = ({ route, navigation }) => {
                 </View>
             <ScrollView>
                 <Text style={{ padding: 20 }}>{videoText}</Text>
-                </ScrollView>
-            <Button onPress={async function() {
-                await Share.share({
-                    message:Link
-                })
-            }} title="Share" />
+            </ScrollView>
+            <View style={{flexDirection: "row", alignItems: 'center', justifyContent:'center'}}>
             <Button
-                title='Like'
-            ></Button>
-         
+            style={{ marginTop: 20 }}
+            color="#6441A5"
+            onPress={async function() {
+              await Share.share({
+                message: Link
+              });
+            }}
+          >
+            Share
+          </Button>
+
+          <Button
+            style={{ marginTop: 20 }}
+            color="#6441A5"
+            onPress={() => {
+              Linking.openURL("https://twitter.com/RondellsArt");
+            }}
+          >
+            Like
+          </Button>
+          </View>
+           
+          
             </SafeAreaView>
   );
         }

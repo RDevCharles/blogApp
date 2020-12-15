@@ -29,7 +29,8 @@ const Articles = () => {
         <ScrollView>
             <View style={{
                 flex: 1,
-                alignItems: 'center',
+          alignItems: 'center',
+                
             }}>
 
                 

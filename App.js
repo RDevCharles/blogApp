@@ -23,6 +23,11 @@ export default function App() {
         <Stack.Screen name="Video" component={VideoPlay}/>
       </Stack.Navigator>
       </NavigationContainer>
+      
    
   );
 }
+
+
+//Add video options to
+//fix up ui
