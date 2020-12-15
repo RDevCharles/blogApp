@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {ScrollView, View, TouchableOpacity } from 'react-native';
 import Card from '../Components/Card';
-import { Text } from 'galio-framework';
 import {db} from '../firebase/firebase';
 
 
@@ -33,7 +32,7 @@ const Projects = props => {
                     return (
                         <TouchableOpacity key ={video.id} onPress={() => {
                             props.navigation.navigate("Video", {
-                                videoText: `${video.article}`,
+                                videoText: `${video.des}`,
                                 videoSource: `${video.clip}`,
                                 videoSummary:`${video.title}`
                               })

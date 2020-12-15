@@ -6,11 +6,15 @@ import {
   Text,
   Image,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Button,
+  Share
 } from "react-native";
 
 const ArticleReadPage = ({ route, navigation }) => {
-  const { articleText, articleImage, articleSummary } = route.params;
+    const { articleText, articleImage, articleSummary } = route.params;
+    const Link =  `${articleText}`
+  
   return (
     <SafeAreaView>
       <ScrollView style={{ backgroundColor: "white", height: "100%" }}>
@@ -24,13 +28,21 @@ const ArticleReadPage = ({ route, navigation }) => {
           source={{ uri: `${articleImage}` }}
         />
         <View style={{ flexDirection: "row", marginTop: 20 }}>
-          <TouchableOpacity style={{ marginLeft: 10 }}>
-          </TouchableOpacity>
+          <TouchableOpacity style={{ marginLeft: 10 }}></TouchableOpacity>
         </View>
 
-        <Text style={styles.articleText}>
-          {articleText}
-        </Text>
+        <Text style={styles.articleText}>{articleSummary}</Text>
+
+        <Text style={{ padding: 20 }}>{articleText}</Text>
+        <Button
+          onPress={async function() {
+            await Share.share({
+              message: Link
+            });
+          }}
+          title="Share"
+        />
+        <Button title="Like"></Button>
       </ScrollView>
     </SafeAreaView>
   );
@@ -43,8 +55,9 @@ styles = StyleSheet.create({
   },
 
   articleText: {
-   
-    margin: 20
+    padding: 20,
+    backgroundColor: "black",
+    color: "white"
   }
 });
 

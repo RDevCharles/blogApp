@@ -13,7 +13,11 @@ export default function App() {
   return (
    
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+         screenOptions={{
+          headerBackTitleVisible: false
+        }}
+      >
         <Stack.Screen name="Legal" component={HomeScreen} />
         <Stack.Screen name="ArticlesReadPage" component={ArticleReadPage} />
         <Stack.Screen name="Video" component={VideoPlay}/>

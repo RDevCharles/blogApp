@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView, Text, Share, Button } from "react-native";
+import { StyleSheet, View, SafeAreaView, Text, Share, Button, ScrollView } from "react-native";
 import { Accordion, Block } from 'galio-framework';
 import { Audio, Video } from "expo-av";
+import { white } from "color-name";
 
 const VideoPlayScreen = ({ route, navigation }) => {
     const { videoText, videoSource, videoSummary } = route.params;
@@ -26,12 +27,20 @@ const VideoPlayScreen = ({ route, navigation }) => {
         style={{ width: "100%", height: 300 }}
       />
             </View>
-            <Text style={{ marginTop: 320, marginLeft: 20 }}>{videoSummary}</Text>
+            <View style={{  borderBottomWidth: .3,borderBottomColor: 'black'}}>
+                <Text style={{ marginTop: 300, padding: 20, backgroundColor: 'black', color:'white', borderBottomColor: 'red' }}>{videoSummary}</Text>
+                </View>
+            <ScrollView>
+                <Text style={{ padding: 20 }}>{videoText}</Text>
+                </ScrollView>
             <Button onPress={async function() {
                 await Share.share({
                     message:Link
-               })
-            }} title="Share"/>
+                })
+            }} title="Share" />
+            <Button
+                title='Like'
+            ></Button>
          
             </SafeAreaView>
   );
