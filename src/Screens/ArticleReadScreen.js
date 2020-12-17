@@ -19,7 +19,7 @@ const ArticleReadPage = ({ route, navigation }) => {
 
   return (
     <SafeAreaView>
-      <View style={{ backgroundColor: "white", height: "100%" }}>
+      <View style={{ height: "95%", backgroundColor:'white' }}>
         <Image
           style={{
             width: "100%",
@@ -32,33 +32,58 @@ const ArticleReadPage = ({ route, navigation }) => {
         </View>
 
         <Text style={styles.articleText}>{articleSummary}</Text>
-        <ScrollView style={{ backgroundColor: "white" }}>
+        
+        <ScrollView style={{ }}>
           <Text style={{ padding: 20 }}>{articleText}</Text>
+         
               </ScrollView>
-        <View
+              <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+         
+        }}
+      >
+        <TouchableOpacity
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center"
+            backgroundColor: "white",
+            borderRadius: 30,
+            padding: 10,
+            marginHorizontal: 80,
+            shadowColor: "blue",
+            shadowOpacity: 0.2,
+            shadowOffset: { width: 0, height: 10 }
           }}
-        >      
-          <TouchableOpacity style={{backgroundColor:'lightgrey', borderRadius:30, padding:10, margin:10}} onPress={async function() {
-              await Share.share({
-                message: Link
-              });
-            }}>
-        <Image style={{width:30, height:30}} source={shareImage}/>
-          </TouchableOpacity>
-          <TouchableOpacity style={{backgroundColor:'lightgrey', borderRadius:30, padding:10}} onPress={async function() {
-              await Share.share({
-                message: Link
-              });
-            }}>
-        <Image style={{width:30, height:30}} source={heartImage}/>
-      </TouchableOpacity>
-          
-        </View>
+          onPress={async function() {
+            await Share.share({
+              message: Link
+            });
+          }}
+        >
+          <Image style={{ width: 30, height: 30 }} source={shareImage} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: "white",
+            borderRadius: 30,
+            padding: 10,
+            marginHorizontal: 80,
+            shadowColor: "blue",
+            shadowOpacity: 0.2,
+            shadowOffset: { width: 0, height: 10 }
+          }}
+          onPress={async function() {
+            await Share.share({
+              message: Link
+            });
+          }}
+        >
+          <Image style={{ width: 30, height: 30 }} source={heartImage} />
+        </TouchableOpacity>
       </View>
+      </View>
+      
   
     </SafeAreaView>
   );
@@ -73,7 +98,7 @@ styles = StyleSheet.create({
 
   articleText: {
     padding: 20,
-    backgroundColor: "black",
+    backgroundColor: "#2a0845",
     color: "white"
   }
 });
