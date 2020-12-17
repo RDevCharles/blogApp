@@ -15,7 +15,11 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
          screenOptions={{
-          headerBackTitleVisible: false
+          headerBackTitleVisible: false,
+          headerTintColor: 'black',
+          headerBackTitleStyle: {
+            
+        }
         }}
       >
         <Stack.Screen name="Legal" component={HomeScreen} />

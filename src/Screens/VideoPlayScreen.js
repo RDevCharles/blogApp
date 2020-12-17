@@ -1,7 +1,11 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView, Text, Share, ScrollView } from "react-native";
-import { Button } from "galio-framework";
+import { StyleSheet, View, SafeAreaView, Text, Share, ScrollView, TouchableOpacity, Image } from "react-native";
+
 import { Audio, Video } from "expo-av";
+import shareImage from "../assets/icons/share.png";
+import heartImage from "../assets/icons/heart.png";
+
+
 
 
 const VideoPlayScreen = ({ route, navigation }) => {
@@ -33,29 +37,29 @@ const VideoPlayScreen = ({ route, navigation }) => {
             <ScrollView>
                 <Text style={{ padding: 20 }}>{videoText}</Text>
             </ScrollView>
-            <View style={{flexDirection: "row", alignItems: 'center', justifyContent:'center'}}>
-            <Button
-            style={{ marginTop: 20 }}
-            color="#6441A5"
-            onPress={async function() {
+            <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >      
+          <TouchableOpacity style={{backgroundColor:'lightgrey', borderRadius:30, padding:10, margin:10}} onPress={async function() {
               await Share.share({
                 message: Link
               });
-            }}
-          >
-            Share
-          </Button>
-
-          <Button
-            style={{ marginTop: 20 }}
-            color="#6441A5"
-            onPress={() => {
-              Linking.openURL("https://twitter.com/RondellsArt");
-            }}
-          >
-            Like
-          </Button>
-          </View>
+            }}>
+        <Image style={{width:30, height:30}} source={shareImage}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={{backgroundColor:'lightgrey', borderRadius:30, padding:10}} onPress={async function() {
+              await Share.share({
+                message: Link
+              });
+            }}>
+        <Image style={{width:30, height:30}} source={heartImage}/>
+      </TouchableOpacity>
+          
+        </View>
            
           
             </SafeAreaView>
