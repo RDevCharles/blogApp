@@ -11,15 +11,15 @@ import {
 } from "react-native";
 import { Button } from "galio-framework";
 import shareImage from "../assets/icons/share.png";
-import heartImage from "../assets/icons/heart.png";
+import heartImage from "../assets/icons/chad.png";
 
 const ArticleReadPage = ({ route, navigation }) => {
   const { articleText, articleImage, articleSummary } = route.params;
   const Link = `${articleText}`;
-
+  
   return (
-    <SafeAreaView>
-      <View style={{ height: "95%", backgroundColor:'white' }}>
+    <SafeAreaView style={{  backgroundColor:'black' }}>
+      <View style={{ height: "100%", backgroundColor:'black' }}>
         <Image
           style={{
             width: "100%",
@@ -34,7 +34,7 @@ const ArticleReadPage = ({ route, navigation }) => {
         <Text style={styles.articleText}>{articleSummary}</Text>
         
         <ScrollView style={{ }}>
-          <Text style={{ padding: 20 }}>{articleText}</Text>
+          <Text style={{ padding: 20, color:'white' }}>{articleText}</Text>
          
               </ScrollView>
               <View
@@ -47,13 +47,13 @@ const ArticleReadPage = ({ route, navigation }) => {
       >
         <TouchableOpacity
           style={{
-            backgroundColor: "white",
-            borderRadius: 30,
+            backgroundColor: "black",
+            borderRadius: 10,
             padding: 10,
             marginHorizontal: 80,
-            shadowColor: "blue",
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 0, height: 10 }
+            shadowColor: "#2a0845",
+            shadowOpacity: 2,
+            shadowOffset: { width: 1, height: 5 }
           }}
           onPress={async function() {
             await Share.share({
@@ -65,13 +65,13 @@ const ArticleReadPage = ({ route, navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{
-            backgroundColor: "white",
+            backgroundColor: "black",
             borderRadius: 30,
             padding: 10,
             marginHorizontal: 80,
-            shadowColor: "blue",
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 0, height: 10 }
+            shadowColor: "#2a0845",
+            shadowOpacity: 2,
+            shadowOffset: { width: 1, height: 5 }
           }}
           onPress={async function() {
             await Share.share({
@@ -98,7 +98,7 @@ styles = StyleSheet.create({
 
   articleText: {
     padding: 20,
-    backgroundColor: "#2a0845",
+    backgroundColor: "#191919",
     color: "white"
   }
 });

@@ -26,11 +26,14 @@ const Articles = () => {
   
   
     return (
-        <ScrollView>
+        <ScrollView style={{
+        
+    backgroundColor: '#191919'
+      }}>
             <View style={{
                 flex: 1,
           alignItems: 'center',
-                
+          backgroundColor: '#191919'
             }}>
 
                 

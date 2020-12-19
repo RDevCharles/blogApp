@@ -16,15 +16,37 @@ export default function App() {
       <Stack.Navigator
          screenOptions={{
           headerBackTitleVisible: false,
-          headerTintColor: 'black',
+          headerTintColor: 'white',
           headerBackTitleStyle: {
             
         }
         }}
       >
-        <Stack.Screen name="Legal" component={HomeScreen} />
-        <Stack.Screen name="ArticlesReadPage" component={ArticleReadPage} />
-        <Stack.Screen name="Video" component={VideoPlay}/>
+        <Stack.Screen name="Legal" component={HomeScreen} options={{
+          headerStyle: { backgroundColor: 'black', shadowColor: 'transparent' },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: 'white',
+            
+          },
+          
+                }} />
+        <Stack.Screen name="ArticlesReadPage" component={ArticleReadPage} options={{
+          headerStyle: { backgroundColor: 'black' },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: 'white',
+            
+          },
+          
+                }} />
+        <Stack.Screen name="Video" component={VideoPlay} options={{
+          headerStyle: { backgroundColor: 'black' },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color:'white'
+          },
+                }}/>
       </Stack.Navigator>
       </NavigationContainer>
       

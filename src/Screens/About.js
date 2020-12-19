@@ -6,7 +6,8 @@ import { Button } from "galio-framework";
 
 const About = () => {
   return (
-    <View style={{ margin: 30 }}>
+    <View style={{ flex: 1, backgroundColor: '#191919' }}>
+      <View style={{margin: 40}}>
       <Text style={styles.headerStyle}>About Legal</Text>
       <Text style={styles.p}>
         {`Legal is a way to share ideas on privacy and technology.
@@ -33,14 +34,15 @@ The content posted is for entertainment purposes only.
 
       <Button
         style={{ marginTop: 20 }}
-        color="black"
+        color="darkgrey"
         onPress={() => {
           Linking.openURL("https://github.com/RDevCharles");
         }}
       >
         GitHub
       </Button>
-    </View>
+      </View>
+      </View>
   );
 };
 
@@ -50,7 +52,6 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     position: "relative",
     margin: 0,
-
     padding: 30,
     justifyContent: "center",
     flexDirection: "column",
@@ -69,7 +70,10 @@ const styles = StyleSheet.create({
   headerStyle: {
     fontSize: 20,
     marginBottom: 20
-  }
+    ,
+    color:'white',
+  },
+  p:{ color:'white',}
 });
 
 export default About;

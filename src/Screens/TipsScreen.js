@@ -23,8 +23,8 @@ const TipsScreen = () => {
     const navigation = useNavigation();
 
     return (
-        <ScrollView>
-        <View style={{flex:1, alignItems: 'center'}}>
+        <ScrollView style={{backgroundColor:'#191919'}}>
+        <View style={{flex:1, alignItems: 'center', }}>
                 {tips.map(tip => {
                     return (
                         <TouchableOpacity key={tip.id} onPress={() => navigation.navigate("ArticlesReadPage", {

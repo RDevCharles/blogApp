@@ -10,11 +10,12 @@ const Card = (props) => {
         width: 320,
         height: 'auto',
         borderRadius: 10,
-        backgroundColor: "white",
+        backgroundColor: "black",
         marginTop: 40,
-        shadowColor: "grey",
+        shadowColor: "black",
         shadowOpacity: 0.4,
-        shadowOffset: { width: 0, height: 10 }
+        shadowOffset: { width: 0, height: 1 }
+        
       }}
       >
           <Image style={{
@@ -23,7 +24,7 @@ const Card = (props) => {
               borderTopRightRadius: 10,
               borderTopLeftRadius: 10,
           }} source={{ uri: `${props.image}` }} />
-      <Text style={{margin:10}} p>{props.title}</Text>
+      <Text style={{margin:10, color:'white'}} p>{props.title}</Text>
     </View>
   );
 };

@@ -12,14 +12,14 @@ import {
 
 import { Audio, Video } from "expo-av";
 import shareImage from "../assets/icons/share.png";
-import heartImage from "../assets/icons/heart.png";
+import heartImage from "../assets/icons/chad.png";
 
 const VideoPlayScreen = ({ route, navigation }) => {
   const { videoText, videoSource, videoSummary } = route.params;
   const Link = `${videoSource}`;
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: 'black' }}>
       <View style={vidStyles.vidContainer}>
         <Video
           source={{
@@ -31,7 +31,7 @@ const VideoPlayScreen = ({ route, navigation }) => {
           resizeMode="cover"
           shouldPlay
           isLooping
-          useNativeControls
+          useNativeControls={true}     
           style={{ width: "100%", height: 300 }}
         />
       </View>
@@ -40,7 +40,7 @@ const VideoPlayScreen = ({ route, navigation }) => {
           style={{
             marginTop: 300,
             padding: 20,
-            backgroundColor: "#2a0845",
+            backgroundColor: "#191919",
             color: "white",
             width: "100%"
           }}
@@ -48,25 +48,26 @@ const VideoPlayScreen = ({ route, navigation }) => {
           {videoSummary}
         </Text>
       </View>
-      <ScrollView>
-        <Text style={{ padding: 20 }}>{videoText}</Text>
+      <ScrollView style={{backgroundColor: 'black' }}>
+        <Text style={{ padding: 20, backgroundColor:'black', color:'white' }}>{videoText}</Text>
       </ScrollView>
       <View
         style={{
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          marginTop:20
+          padding: 20,
+          backgroundColor: "black",
         }}
       >
         <TouchableOpacity
           style={{
-            backgroundColor: "white",
+            backgroundColor: "black",
             borderRadius: 30,
             padding: 10,
             marginHorizontal: 80,
-            shadowColor: "#6441A5",
-            shadowOpacity: 0.2,
+            shadowColor: "#2a0845",
+            shadowOpacity: 2,
             shadowOffset: { width: 0, height: 10 }
           }}
           onPress={async function() {
@@ -79,13 +80,14 @@ const VideoPlayScreen = ({ route, navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{
-            backgroundColor: "white",
+            backgroundColor: "black",
             borderRadius: 30,
             padding: 10,
             marginHorizontal: 80,
-            shadowColor: "#6441A5",
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 0, height: 10 }
+            shadowColor: "#2a0845",
+            shadowOpacity: 2,
+            shadowOffset: { width: 0, height: 10 },
+            
           }}
           onPress={async function() {
             await Share.share({
@@ -104,6 +106,7 @@ const vidStyles = StyleSheet.create({
   vidContainer: {
     flex: 1,
     alignItems: "center",
+    backgroundColor: "black",
    
   }
 });
