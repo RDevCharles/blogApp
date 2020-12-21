@@ -3,7 +3,6 @@ import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-nati
 import { useNavigation } from "@react-navigation/native";
 import { db } from '../firebase/firebase';
 import Card from '../Components/Card';
-
 const Articles = () => {
 
     const [articles, setArticles] = useState([]);
@@ -18,10 +17,11 @@ const Articles = () => {
   
          
         });
-        setArticles(articleData);
+          setArticles(articleData);
+          
       });
     }, []);
-  
+   
   const navigation = useNavigation();
   
   
@@ -36,17 +36,21 @@ const Articles = () => {
           backgroundColor: '#191919'
             }}>
 
-                
+
                 {articles.map((article) => {
             return (
               <TouchableOpacity key={article.id} onPress={() => navigation.navigate("ArticlesReadPage", {
                 articleText: `${article.article}`,
                 articleImage: `${article.image}`,
-                articleSummary:`${article.summary }`
+                articleSummary: `${article.summary}`,
+                articleSalute: `${article.salute}`,
+                articleUid:`${article.id}`
               })}>
                 <Card
                   title={article.summary}
-                  image={article.image} />
+                  image={article.image}
+                  salute={article.salute} />
+              
               </TouchableOpacity>
               
             )
