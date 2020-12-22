@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import Articles from './Articles';
 import Projects from './Projects';
 import Tips from './TipsScreen';
@@ -14,32 +14,67 @@ const HomeScreen = () => {
             
             <Tab.Navigator
             
-            tabBarOptions={{
-                activeTintColor:'white',
-                inactiveTintColor:'#D3D3D3',
+                tabBarOptions={
+                    {
+                        
+                        pressOpacity: 0,
+                    activeTintColor: 'white',
+                    inactiveTintColor: '#D3D3D3',
+                    
+                    
                 style:{
                     backgroundColor:'black',
-                    borderTopWidth:0,
-                    borderTopColor:'#D3D3D3'
-                },
-                indicatorStyle: {
-                    backgroundColor: 'red',
-                },
+                    
+                    borderTopColor: 'black'
+                    
+                        },
+                indicatorStyle: {backgroundColor:'red', color:'red',borderTopWidth:2},
+                
             }
         }
             >
                 <Tab.Screen 
+                    
                     name="Articles" component={Articles}
-                   
+                    options={{   tabBarIcon: 
+                        (focused, tintColor) => (
+                            <Image style={{
+                                width: 20,
+                                height: 20,
+                               
+                            }} source={{uri:"https://img.icons8.com/android/24/ffffff/home.png"}}/>
+                        ),
+                        pressOpacity: 0
+                       
+                            }}
+                           
+                        
+                
                 />
-                <Tab.Screen name="Quick Tips" component={Tips} />
-                <Tab.Screen name="Videos" component={Projects} />
-                <Tab.Screen name="About" component={About}/>
+                <Tab.Screen name="Quick Tips" component={Tips} options={{   tabBarIcon: 
+                        (focused, tintColor) => (
+                            <Image style={{
+                                width: 20,
+                                height: 20,
+                               
+                            }} source={{uri:"https://img.icons8.com/ios-glyphs/30/ffffff/stack-of-coins.png"}}/>
+                          )
+                            }} />
+                {/* <Tab.Screen name="Videos" component={Projects} /> */}
+                <Tab.Screen name="About" component={About} options={{   tabBarIcon: 
+                        (focused, tintColor) => (
+                            <Image style={{
+                                width: 20,
+                                height: 20,
+                               
+                            }} source={{uri:"https://img.icons8.com/ios-glyphs/30/ffffff/information.png"
+                        }}/>
+                          )
+                            }}/>
             </Tab.Navigator>
             </View>
     )
 }
-
 
 
 export default HomeScreen

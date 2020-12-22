@@ -10,7 +10,7 @@ const Card = (props) => {
       style={{
         width: 320,
         height: 'auto',
-        borderRadius: 10,
+       
         backgroundColor: "black",
         marginTop: 40,
         shadowColor: "black",
@@ -22,9 +22,9 @@ const Card = (props) => {
           <Image style={{
               width: 320,
               height: 250,
-              borderTopRightRadius: 10,
-              borderTopLeftRadius: 10,
-          }} source={{ uri: `${props.image}` }} />
+             
+      }} source={{ uri: `${props.image}` }} />
+      
       <Text style={{ margin: 10, color: 'white' }} p>{props.title}</Text>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
 
@@ -37,3 +37,4 @@ const Card = (props) => {
 };
 
 export default Card;
+
