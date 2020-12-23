@@ -8,7 +8,15 @@ import About from './About';
 
 const Tab = createBottomTabNavigator()
 
+
 const HomeScreen = () => {
+    const homeIcon = "https://img.icons8.com/android/24/333333/home.png";
+    const homeIconFocused = "https://img.icons8.com/android/24/ffffff/home.png";
+    const coinsIcon = "https://img.icons8.com/ios-glyphs/30/333333/stack-of-coins.png";
+    const coinsIconFocused = "https://img.icons8.com/ios-glyphs/30/ffffff/stack-of-coins.png";
+    const aboutIcon = "https://img.icons8.com/ios-glyphs/30/333333/information.png";
+    const aboutIconFocused = "https://img.icons8.com/ios-glyphs/30/ffffff/information.png";
+
     return (
         <View style={{ flex: 1, backgroundColor:'black', }}>
             
@@ -30,47 +38,58 @@ const HomeScreen = () => {
                         },
                 indicatorStyle: {backgroundColor:'red', color:'red',borderTopWidth:2},
                 
-            }
+                    }
+                    
         }
             >
                 <Tab.Screen 
                     
                     name="Articles" component={Articles}
-                    options={{   tabBarIcon: 
-                        (focused, tintColor) => (
-                            <Image style={{
-                                width: 20,
-                                height: 20,
-                               
-                            }} source={{uri:"https://img.icons8.com/android/24/ffffff/home.png"}}/>
-                        ),
-                        pressOpacity: 0
-                       
-                            }}
-                           
-                        
+                    options={({ route }) => ({
+                        tabBarIcon: ({ focused }) => {
+                            let iconName;
+                  
+                            if (route.name === "Articles") {
+                                iconName = focused ? homeIconFocused : homeIcon;
+                            } 
+                            return   <Image style={{
+                                                                width: 20,
+                                                                height: 20,
+                                                               
+                                                            }} source={{uri:`${iconName}`}}/>
+                        }
+                    })}
                 
+                           
+                  
                 />
-                <Tab.Screen name="Quick Tips" component={Tips} options={{   tabBarIcon: 
-                        (focused, tintColor) => (
-                            <Image style={{
-                                width: 20,
-                                height: 20,
-                               
-                            }} source={{uri:"https://img.icons8.com/ios-glyphs/30/ffffff/stack-of-coins.png"}}/>
-                          )
-                            }} />
+                <Tab.Screen name="Quick Tips" component={Tips} options={({ route }) => ({
+                        tabBarIcon: ({ focused }) => {
+                            let iconName;
+                            if (route.name === "Quick Tips") {
+                                iconName = focused ? coinsIconFocused : coinsIcon;
+                            } 
+                            return   <Image style={{
+                                                                width: 20,
+                                                                height: 20,
+                                                               
+                                                            }} source={{uri:`${iconName}`}}/>
+                        }
+                    })} />
                 {/* <Tab.Screen name="Videos" component={Projects} /> */}
-                <Tab.Screen name="About" component={About} options={{   tabBarIcon: 
-                        (focused, tintColor) => (
-                            <Image style={{
-                                width: 20,
-                                height: 20,
-                               
-                            }} source={{uri:"https://img.icons8.com/ios-glyphs/30/ffffff/information.png"
-                        }}/>
-                          )
-                            }}/>
+                <Tab.Screen name="About" component={About} options={({ route }) => ({
+                        tabBarIcon: ({ focused }) => {
+                            let iconName;
+                            if (route.name === "About") {
+                                iconName = focused ? aboutIconFocused : aboutIcon;
+                            } 
+                            return   <Image style={{
+                                                                width: 20,
+                                                                height: 20,
+                                                               
+                                                            }} source={{uri:`${iconName}`}}/>
+                        }
+                    })} />
             </Tab.Navigator>
             </View>
     )
@@ -93,3 +112,17 @@ const tabOptions = {
         },
     },
 }
+
+
+
+// tabBarIcon: 
+//                         (focused, tintColor) => (
+//                             <Image style={{
+//                                 width: 20,
+//                                 height: 20,
+                               
+//                             }} source={{uri:"https://img.icons8.com/android/24/ffffff/home.png"}}/>
+//                         ),
+//                         pressOpacity: 0
+                       
+                           
