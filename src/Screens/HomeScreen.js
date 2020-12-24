@@ -10,6 +10,9 @@ const Tab = createBottomTabNavigator()
 
 
 const HomeScreen = () => {
+
+    //LIST OF STATIC ICONS
+    
     const homeIcon = "https://img.icons8.com/android/24/333333/home.png";
     const homeIconFocused = "https://img.icons8.com/android/24/ffffff/home.png";
     const coinsIcon = "https://img.icons8.com/ios-glyphs/30/333333/stack-of-coins.png";

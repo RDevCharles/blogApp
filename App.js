@@ -22,7 +22,7 @@ export default function App() {
         }
         }}
       >
-        <Stack.Screen name="Legal" component={HomeScreen} options={{
+        <Stack.Screen name="WhatsLegal" component={HomeScreen} options={{
           headerStyle: { backgroundColor: 'black', shadowColor: 'transparent' },
           headerTitleStyle: {
             fontWeight: 'bold',

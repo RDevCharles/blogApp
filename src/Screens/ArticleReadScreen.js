@@ -55,7 +55,10 @@ const ArticleReadPage = ({ route, navigation }) => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
+            marginBottom: 20, justifyContent: "center",
+            borderTopWidth:1,
+            borderTopColor: "#2a0845"
           }}
         >
           {/*SHAREBUTTON*/}
@@ -65,6 +68,7 @@ const ArticleReadPage = ({ route, navigation }) => {
               borderRadius: 10,
               padding: 10,
               marginHorizontal: 80,
+              marginTop: 20,
               shadowColor: "#2a0845",
               shadowOpacity: 2,
               shadowOffset: { width: 1, height: 5 }
@@ -84,6 +88,7 @@ const ArticleReadPage = ({ route, navigation }) => {
               borderRadius: 30,
               padding: 10,
               marginHorizontal: 80,
+              marginTop: 20,
               shadowColor: "#2a0845",
               shadowOpacity: 2,
               shadowOffset: { width: 1, height: 5 }

@@ -10,15 +10,17 @@ const MiniCard = (props) => {
         width: 320,
         height: 'auto',
         borderRadius: 10,
-        backgroundColor: "white",
+        backgroundColor: "black",
+        color: "white",
         marginTop: 40,
         shadowColor: "grey",
         shadowOpacity: 0.4,
-        shadowOffset: { width: 0, height: 10 }
+        shadowOffset: { width: 0, height: 1 }
       }}
-      >
+    >
+      <Image style={{ marginTop:10, width: 70, height: 70, borderRadius:40, justifyContent: "center", alignSelf: "center"}} source={{uri:`${props.image}`}}/>
 
-      <Text style={{margin:10}} p>{props.title}</Text>
+      <Text style={{margin:10, color: 'white', textAlign:'center'}} p>{props.title}</Text>
     </View>
   );
 };
