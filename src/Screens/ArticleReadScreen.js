@@ -11,14 +11,14 @@ import {
 } from "react-native";
 import shareImage from "../assets/icons/share.png";
 import heartImage from "../assets/icons/chad.png";
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 import { db } from "../firebase/firebase";
-
 
 //USESTATE FUNCTION TO CALCULATE SALUTES
 
-
 const ArticleReadPage = ({ route, navigation }) => {
+ 
+ 
   const {
     articleText,
     articleImage,
@@ -26,13 +26,16 @@ const ArticleReadPage = ({ route, navigation }) => {
     articleSalute,
     articleUid
   } = route.params;
-  const Link = `${articleText}`; 
-  let salutes = parseInt({ articleSalute });
+  const Link = `${articleText}`;
   const increment = firebase.firestore.FieldValue.increment(1);
 
+  //STATE OF SALUTES
+  const [domSalute, setDomSalute] = useState(Number(articleSalute));
+  
   return (
-    <SafeAreaView style={{ backgroundColor: "black",  }}>
-      <View style={{ height: "100%", backgroundColor: "black", }}>
+    <SafeAreaView style={{ backgroundColor: "black" }}>
+      
+      <View style={{ height: "100%", backgroundColor: "black" }}>
         <Image
           style={{
             width: "100%",
@@ -43,10 +46,12 @@ const ArticleReadPage = ({ route, navigation }) => {
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity style={{ marginLeft: 10 }}></TouchableOpacity>
         </View>
-<View style={styles.articleText}><Text style={{color: 'white'}} >{articleSummary}</Text>
-          <Text style={{ margin: 10, color: 'grey', fontSize: 12 }}>Salutes:{articleSalute}</Text>
+        <View style={styles.articleText}>
+          <Text style={{ color: "white" }}>{articleSummary}</Text>
+          <Text style={{ margin: 10, color: "grey", fontSize: 12 }}>
+            Salutes:{domSalute}
+          </Text>
         </View>
-        
 
         <ScrollView style={{}}>
           <Text style={{ padding: 20, color: "white" }}>{articleText}</Text>
@@ -56,9 +61,10 @@ const ArticleReadPage = ({ route, navigation }) => {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
-            marginBottom: 20, justifyContent: "center",
-            borderTopWidth:1,
-            borderTopColor: "#2a0845"
+            marginBottom: 20,
+            justifyContent: "center",
+            borderTopWidth: 1,
+            borderTopColor: "purple"
           }}
         >
           {/*SHAREBUTTON*/}
@@ -69,7 +75,7 @@ const ArticleReadPage = ({ route, navigation }) => {
               padding: 10,
               marginHorizontal: 80,
               marginTop: 20,
-              shadowColor: "#2a0845",
+              shadowColor: "purple",
               shadowOpacity: 2,
               shadowOffset: { width: 1, height: 5 }
             }}
@@ -89,26 +95,26 @@ const ArticleReadPage = ({ route, navigation }) => {
               padding: 10,
               marginHorizontal: 80,
               marginTop: 20,
-              shadowColor: "#2a0845",
+              shadowColor: "purple",
               shadowOpacity: 2,
               shadowOffset: { width: 1, height: 5 }
             }}
-            onPress={
-              () => {
-                return db
+            onPress={() => {
+             setDomSalute(domSalute);
+
+              return db
                 .collection("articles")
-                .doc(articleUid )
+                .doc(articleUid)
                 .update(
                   {
                     salute: increment
                   },
                   { merge: true }
-                );
-            }
+              ),
+              setDomSalute(domSalute => ++domSalute)
              
-            }
+            }}
           >
-            
             <Image style={{ width: 30, height: 30 }} source={heartImage} />
           </TouchableOpacity>
         </View>
@@ -128,7 +134,7 @@ styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#191919",
     color: "white",
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center"
   }
 });

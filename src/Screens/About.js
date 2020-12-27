@@ -10,9 +10,9 @@ const About = () => {
       <View style={{margin: 40}}>
       <Text style={styles.headerStyle}>About Legal</Text>
       <Text style={styles.p}>
-        {`Legal is a way to share ideas on privacy and technology.
+        {`Legal is a way to share ideas on the legal system, privacy, and technology.
         
-I claim no responsibility for the actions taken after viewing content on this platform nor do I encourage any illegal activities after viewing content on this platform.
+I do not encourage any illegal activities after viewing content on this platform.
 The content posted is for entertainment purposes only.
         `}
       </Text>

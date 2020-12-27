@@ -12,7 +12,9 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
    
-    <NavigationContainer>
+    <NavigationContainer
+     
+    >
       <Stack.Navigator
          screenOptions={{
           headerBackTitleVisible: false,
@@ -31,13 +33,19 @@ export default function App() {
           },
           
                 }} />
-        <Stack.Screen name="ArticlesReadPage" component={ArticleReadPage} options={{
-          headerStyle: { backgroundColor: 'black' },
+        <Stack.Screen name="Article" component={ArticleReadPage} options={{
+         
+          headerStyle: {
+            backgroundColor: 'black',
+            shadowColor:'transparent',
+           },
           headerTitleStyle: {
             fontWeight: 'bold',
             color: 'white',
-            
+            borderBottomColor: 'transparent',
+           
           },
+          
           
                 }} />
         <Stack.Screen name="Video" component={VideoPlay} options={{

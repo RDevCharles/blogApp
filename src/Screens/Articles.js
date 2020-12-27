@@ -39,7 +39,7 @@ const Articles = () => {
 
                 {articles.map((article) => {
             return (
-              <TouchableOpacity key={article.id} onPress={() => navigation.navigate("ArticlesReadPage", {
+              <TouchableOpacity key={article.id} onPress={() => navigation.navigate("Article", {
                 articleText: `${article.article}`,
                 articleImage: `${article.image}`,
                 articleSummary: `${article.summary}`,

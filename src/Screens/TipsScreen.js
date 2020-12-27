@@ -32,7 +32,7 @@ const TipsScreen = () => {
                         //     articleSummary:`${tip.summary }`
                         //   })}>
                         <MiniCard
-                           
+                           key ={tip.id}
                             title={tip.summary}
                             image={tip.image}/>
                         // </TouchableOpacity>
