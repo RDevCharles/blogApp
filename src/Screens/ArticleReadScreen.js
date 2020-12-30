@@ -24,7 +24,10 @@ const ArticleReadPage = ({ route, navigation }) => {
     articleImage,
     articleSummary,
     articleSalute,
-    articleUid
+    articleUid,
+    articlePoint1,
+    articlePoint2,
+    articlePoint3
   } = route.params;
   const Link = `${articleText}`;
   const increment = firebase.firestore.FieldValue.increment(1);
@@ -54,7 +57,21 @@ const ArticleReadPage = ({ route, navigation }) => {
         </View>
 
         <ScrollView style={{}}>
-          <Text style={{ padding: 20, color: "white" }}>{articleText}</Text>
+          <Text style={{ padding: 20, color: "white", backgroundColor:'#191219',   }}>{articleText}</Text>
+
+          
+          {articlePoint1 ? <Text style={{ padding: 20, color: "white", marginTop: 12}}>{articlePoint1}</Text> : <Text style={{ padding: 20, color: "white", marginTop: 12}}>lo</Text>
+            
+          }
+          {articlePoint2 ? <Text style={{ padding: 20, color: "white", marginTop: 12}}>{articlePoint2}</Text> : null
+            
+          }
+          {articlePoint3 ? <Text style={{ padding: 20, color: "white", marginTop: 12}}>{articlePoint3}</Text> : null
+            
+          }
+        
+         
+         
         </ScrollView>
         <View
           style={{
@@ -86,6 +103,7 @@ const ArticleReadPage = ({ route, navigation }) => {
             }}
           >
             <Image style={{ width: 30, height: 30 }} source={shareImage} />
+            
           </TouchableOpacity>
           {/*SALUTE (LIKE)BUTTON*/}
           <TouchableOpacity

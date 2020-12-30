@@ -44,7 +44,10 @@ const Articles = () => {
                 articleImage: `${article.image}`,
                 articleSummary: `${article.summary}`,
                 articleSalute: `${article.salute}`,
-                articleUid:`${article.id}`
+                articleUid: `${article.id}`,
+                articlePoint1: `${article.point1}`,
+                articlePoint2: `${article.point2}`,
+                articlePoint3: `${article.point3}`
               })}>
                 <Card
                   title={article.summary}

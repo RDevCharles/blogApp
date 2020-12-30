@@ -34,7 +34,9 @@ const TipsScreen = () => {
                         <MiniCard
                            key ={tip.id}
                             title={tip.summary}
-                            image={tip.image}/>
+                            image={tip.image}
+                        
+                        />
                         // </TouchableOpacity>
                     )
                 })}
