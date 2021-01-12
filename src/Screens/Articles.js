@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, TouchableOpacity } from "react-native";
+import { TouchableOpacity, FlatList, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { db } from "../firebase/firebase";
 import Card from "../Components/Card";
@@ -7,7 +7,6 @@ import Card from "../Components/Card";
 const Articles = () => {
   const [articles, setArticles] = React.useState([]);
 
-  //GET INITIAL DATA FROM FIRESTORE
   React.useEffect(() => {
     const articleData = [];
     return db.collection("articles").onSnapshot(snapshot => {
@@ -17,8 +16,7 @@ const Articles = () => {
       setArticles(articleData);
     });
   }, []);
-
-  //REFRESH SCREEN WHEN REFRSHED
+  console.log(articles);
 
   React.useEffect(() => {
     const unsubscribe = navigation.addListener("focus", () => {
@@ -36,45 +34,56 @@ const Articles = () => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView
+    <SafeAreaView
       style={{
-        backgroundColor: "#191919"
+        backgroundColor: "#191919",
+        flex: 1
       }}
     >
-      <View
+      <FlatList
         style={{
-          flex: 1,
-          alignItems: "center",
-          backgroundColor: "#191919"
+          padding: 40,
+          alignSelf: "center"
         }}
-      >
-        {articles.map(article => {
+        data={articles}
+        refreshing={false}
+        onRefresh={() => {
+          const articleData = [];
+          return db.collection("articles").onSnapshot(snapshot => {
+            snapshot.forEach(doc => {
+              articleData.push({ ...doc.data(), id: doc.id });
+            });
+            setArticles(articleData);
+          });
+        }}
+        renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              key={article.id}
+              key={item.id}
               onPress={() =>
                 navigation.navigate("Article", {
-                  articleText: `${article.article}`,
-                  articleImage: `${article.image}`,
-                  articleSummary: `${article.summary}`,
-                  articleSalute: `${article.salute}`,
-                  articleUid: `${article.id}`,
-                  articlePoint1: `${article.point1}`,
-                  articlePoint2: `${article.point2}`,
-                  articlePoint3: `${article.point3}`
+                  articleText: `${item.article}`,
+                  articleImage: `${item.image}`,
+                  articleSummary: `${item.summary}`,
+                  articleSalute: `${item.salute}`,
+                  articleUid: `${item.id}`,
+                  articlePoint1: `${item.point1}`,
+                  articlePoint2: `${item.point2}`,
+                  articlePoint3: `${item.point3}`
                 })
               }
             >
               <Card
-                title={article.summary}
-                image={article.image}
-                salute={article.salute}
+                title={item.summary}
+                image={item.image}
+                salute={item.salute}
               />
             </TouchableOpacity>
           );
-        })}
-      </View>
-    </ScrollView>
+        }}
+        keyExtractor={article => article.id}
+      />
+    </SafeAreaView>
   );
 };
 

@@ -4,7 +4,7 @@ import { View, Image } from "react-native";
 import Articles from "./Articles";
 import Tips from "./TipsScreen";
 import About from "./About";
-import Test from "./TestArticlePage";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -107,27 +107,7 @@ const HomeScreen = () => {
             }
           })}
         />
-        <Tab.Screen
-          name="Test"
-          component={Test}
-          options={({ route }) => ({
-            tabBarIcon: ({ focused }) => {
-              let iconName;
-              if (route.name === "Test") {
-                iconName = focused ? aboutIconFocused : aboutIcon;
-              }
-              return (
-                <Image
-                  style={{
-                    width: 20,
-                    height: 20
-                  }}
-                  source={{ uri: `${iconName}` }}
-                />
-              );
-            }
-          })}
-        />
+      
       </Tab.Navigator>
     </View>
   );
