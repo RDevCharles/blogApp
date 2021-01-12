@@ -1,5 +1,5 @@
-import React, { useState, useLayoutEffect, createContext } from "react";
- 
+import React from "react";
+
 import {
   View,
   SafeAreaView,
@@ -8,7 +8,6 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Button,
   Share
 } from "react-native";
 import shareImage from "../assets/icons/share.png";
@@ -16,10 +15,7 @@ import heartImage from "../assets/icons/chad.png";
 import * as firebase from "firebase";
 import { db } from "../firebase/firebase";
 
-//USESTATE FUNCTION TO CALCULATE SALUTES
-const ArticleReadPage = ({ route, navigation }) => {
- 
- 
+const ArticleReadPage = ({ route }) => {
   const {
     articleText,
     articleImage,
@@ -35,12 +31,10 @@ const ArticleReadPage = ({ route, navigation }) => {
   const increment = firebase.firestore.FieldValue.increment(1);
 
   //STATE OF SALUTES
-  const [domSalute, setDomSalute] = useState(Number(articleSalute));
-
+  const [domSalute, setDomSalute] = React.useState(Number(articleSalute));
 
   return (
     <SafeAreaView style={{ backgroundColor: "black" }}>
-      
       <View style={{ height: "100%", backgroundColor: "black" }}>
         <Image
           style={{
@@ -60,21 +54,31 @@ const ArticleReadPage = ({ route, navigation }) => {
         </View>
 
         <ScrollView style={{}}>
-          <Text style={{ padding: 20, color: "white", backgroundColor:'#191219',   }}>{articleText}</Text>
+          <Text
+            style={{ padding: 20, color: "white", backgroundColor: "#191219" }}
+          >
+            {articleText}
+          </Text>
 
-          
-          {articlePoint1 ? <Text style={{ padding: 20, color: "white", marginTop: 12}}>{articlePoint1}</Text> : <Text style={{ padding: 20, color: "white", marginTop: 12}}>lo</Text>
-            
-          }
-          {articlePoint2 ? <Text style={{ padding: 20, color: "white", marginTop: 12}}>{articlePoint2}</Text> : null
-            
-          }
-          {articlePoint3 ? <Text style={{ padding: 20, color: "white", marginTop: 12}}>{articlePoint3}</Text> : null
-            
-          }
-        
-         
-         
+          {articlePoint1 ? (
+            <Text style={{ padding: 20, color: "white", marginTop: 12 }}>
+              {articlePoint1}
+            </Text>
+          ) : (
+            <Text style={{ padding: 20, color: "white", marginTop: 12 }}>
+              lo
+            </Text>
+          )}
+          {articlePoint2 ? (
+            <Text style={{ padding: 20, color: "white", marginTop: 12 }}>
+              {articlePoint2}
+            </Text>
+          ) : null}
+          {articlePoint3 ? (
+            <Text style={{ padding: 20, color: "white", marginTop: 12 }}>
+              {articlePoint3}
+            </Text>
+          ) : null}
         </ScrollView>
         <View
           style={{
@@ -108,7 +112,6 @@ const ArticleReadPage = ({ route, navigation }) => {
             }}
           >
             <Image style={{ width: 30, height: 30 }} source={shareImage} />
-            
           </TouchableOpacity>
           {/*SALUTE (LIKE)BUTTON*/}
           <TouchableOpacity
@@ -123,20 +126,20 @@ const ArticleReadPage = ({ route, navigation }) => {
               shadowOffset: { width: 1, height: 5 }
             }}
             onPress={() => {
-             setDomSalute(domSalute);
+              setDomSalute(domSalute);
 
-              return db
-                .collection("articles")
-                .doc(articleUid)
-                .update(
-                  {
-                    salute: increment
-                  },
-                  { merge: true }
-              ),
+              return (
+                db
+                  .collection("articles")
+                  .doc(articleUid)
+                  .update(
+                    {
+                      salute: increment
+                    },
+                    { merge: true }
+                  ),
                 setDomSalute(domSalute => ++domSalute)
-              
-            
+              );
             }}
           >
             <Image style={{ width: 30, height: 30 }} source={heartImage} />

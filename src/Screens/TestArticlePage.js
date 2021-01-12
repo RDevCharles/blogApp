@@ -1,8 +1,6 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import {
   StyleSheet,
-  View,
-  ScrollView,
   TouchableOpacity,
   FlatList, 
   SafeAreaView
@@ -12,7 +10,7 @@ import { db } from "../firebase/firebase";
 import Card from "../Components/Card";
 
 const TestArticlePage = () => {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = React.useState([]);
 
   React.useEffect(() => {
     const articleData = [];

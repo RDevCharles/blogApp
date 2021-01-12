@@ -1,12 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import React, { Fragment } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./src/Screens/HomeScreen";
 import ArticleReadPage from "./src/Screens/ArticleReadScreen";
 import VideoPlay from "./src/Screens/VideoPlayScreen";
-import { useNavigation } from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
@@ -50,13 +47,6 @@ export default function App() {
               color: "white",
               borderBottomColor: "transparent"
             },
-            // headerLeft: () => (
-            //   <Button
-            //     onPress={() => navigation.navigate('Home')}
-            //     title="Info"
-            //     color="#fff"
-            //   />
-            // ),
           }}
         />
         <Stack.Screen
@@ -76,7 +66,6 @@ export default function App() {
 }
 
 //TODO: 
-//Change back button to go back and refresh page so that salute state is updated if it has been chanhged.
 //Fix FlatList.
 //Add Sign in feature. Make optional and the benifit is getting updates when new stories update.
 

@@ -1,6 +1,5 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useIsFocused } from "@react-navigation/native";
 import { View, Image } from "react-native";
 import Articles from "./Articles";
 import Tips from "./TipsScreen";
@@ -10,8 +9,6 @@ import Test from "./TestArticlePage";
 const Tab = createBottomTabNavigator();
 
 const HomeScreen = () => {
-
-    
   //LIST OF STATIC ICONS
 
   const homeIcon = "https://img.icons8.com/android/24/333333/home.png";
@@ -88,7 +85,7 @@ const HomeScreen = () => {
             }
           })}
         />
-    
+
         <Tab.Screen
           name="About"
           component={About}
@@ -109,8 +106,8 @@ const HomeScreen = () => {
               );
             }
           })}
-              />
-              <Tab.Screen
+        />
+        <Tab.Screen
           name="Test"
           component={Test}
           options={({ route }) => ({
@@ -137,21 +134,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-const tabOptions = {
-  tabBarOptions: {
-    activeTintColor: "white",
-    inactiveTintColor: "#D3D3D3",
-    style: {
-      backgroundColor: "green",
-      borderTopWidth: 1,
-      borderTopColor: "#D3D3D3"
-    },
-    indicatorStyle: {
-      backgroundColor: "red"
-    }
-  }
-};
-
-
-//use redux
