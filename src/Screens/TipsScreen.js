@@ -1,6 +1,5 @@
 import React, {useState, useEffect}from 'react';
-import { ScrollView, View, /*TouchableOpacity*/ } from 'react-native';
-// import { useNavigation } from "@react-navigation/native";
+import { ScrollView, View } from 'react-native';
 import { db } from '../firebase/firebase';
 import MiniCard from '../Components/MiniCard';
 
@@ -19,25 +18,21 @@ const TipsScreen = () => {
                 setTips(tipsData);
             })
     }, []);
-    // const navigation = useNavigation();
+
 
     return (
         <ScrollView style={{backgroundColor:'#191919'}}>
         <View style={{flex:1, alignItems: 'center', }}>
                 {tips.map(tip => {
                     return (
-                        // <TouchableOpacity key={tip.id} onPress={() => navigation.navigate("ArticlesReadPage", {
-                        //     articleText: `${tip.article}`,
-                        //     articleImage: `${tip.image}`,
-                        //     articleSummary:`${tip.summary }`
-                        //   })}>
+                   
                         <MiniCard
                            key ={tip.id}
                             title={tip.summary}
                             image={tip.image}
                         
                         />
-                        // </TouchableOpacity>
+                    
                     )
                 })}
             </View>

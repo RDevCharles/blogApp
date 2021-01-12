@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
+import React, {useState, useContext} from 'react';
+import { Text, StyleSheet, View, ScrollView, TouchableOpacity, RefreshControl, } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { db } from '../firebase/firebase';
 import Card from '../Components/Card';
+
 const Articles = () => {
 
-    const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([]);
  
 
-    useEffect(() => {
+     React.useEffect(() => {
       const articleData = [];
       return db.collection("articles")
         .onSnapshot(snapshot => {
@@ -20,7 +21,24 @@ const Articles = () => {
           setArticles(articleData);
           
       });
-    }, []);
+     }, []);
+  
+     React.useEffect(() => {
+      const unsubscribe = navigation.addListener('focus', () => {
+        const articleData = [];
+        return db.collection("articles")
+        .onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          articleData.push({ ...doc.data(), id: doc.id });
+  
+         
+        });
+          setArticles(articleData);
+          
+      });
+      });
+      return unsubscribe;
+    }, [navigation]);
    
   const navigation = useNavigation();
   
@@ -49,12 +67,14 @@ const Articles = () => {
                 articlePoint2: `${article.point2}`,
                 articlePoint3: `${article.point3}`
               })}>
+                 
+                
                 <Card
                   title={article.summary}
                   image={article.image}
-                  salute={article.salute} />
-              
-              </TouchableOpacity>
+                    salute={article.salute} />
+                
+             </TouchableOpacity>
               
             )
           })}

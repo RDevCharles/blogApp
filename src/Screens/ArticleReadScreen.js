@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect, createContext } from "react";
+ 
 import {
   View,
   SafeAreaView,
@@ -7,6 +8,7 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
+  Button,
   Share
 } from "react-native";
 import shareImage from "../assets/icons/share.png";
@@ -15,7 +17,6 @@ import * as firebase from "firebase";
 import { db } from "../firebase/firebase";
 
 //USESTATE FUNCTION TO CALCULATE SALUTES
-
 const ArticleReadPage = ({ route, navigation }) => {
  
  
@@ -30,11 +31,13 @@ const ArticleReadPage = ({ route, navigation }) => {
     articlePoint3
   } = route.params;
   const Link = `${articleText}`;
+  const Url = "https://apps.apple.com/us/app/whatslegal/id1543793062";
   const increment = firebase.firestore.FieldValue.increment(1);
 
   //STATE OF SALUTES
   const [domSalute, setDomSalute] = useState(Number(articleSalute));
-  
+
+
   return (
     <SafeAreaView style={{ backgroundColor: "black" }}>
       
@@ -78,7 +81,7 @@ const ArticleReadPage = ({ route, navigation }) => {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
-            marginBottom: 20,
+            marginBottom: 10,
             justifyContent: "center",
             borderTopWidth: 1,
             borderTopColor: "purple"
@@ -98,7 +101,9 @@ const ArticleReadPage = ({ route, navigation }) => {
             }}
             onPress={async function() {
               await Share.share({
-                message: Link
+                subject: Link,
+                message: Link,
+                url: Url
               });
             }}
           >
@@ -129,8 +134,9 @@ const ArticleReadPage = ({ route, navigation }) => {
                   },
                   { merge: true }
               ),
-              setDomSalute(domSalute => ++domSalute)
-             
+                setDomSalute(domSalute => ++domSalute)
+              
+            
             }}
           >
             <Image style={{ width: 30, height: 30 }} source={heartImage} />
