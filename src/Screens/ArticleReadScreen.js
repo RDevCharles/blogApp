@@ -26,6 +26,8 @@ const ArticleReadPage = ({ route }) => {
     articlePoint2,
     articlePoint3
   } = route.params;
+  
+   //LINK AND APP LINK FOR SHARING
   const Link = `${articleText}`;
   const Url = "https://apps.apple.com/us/app/whatslegal/id1543793062";
   const increment = firebase.firestore.FieldValue.increment(1);
@@ -52,7 +54,7 @@ const ArticleReadPage = ({ route }) => {
             Salutes:{domSalute}
           </Text>
         </View>
-
+{/*BOTTOM SCROLL STARTS */}
         <ScrollView style={{}}>
           <Text
             style={{ padding: 20, color: "white", backgroundColor: "#191219" }}

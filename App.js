@@ -8,12 +8,8 @@ import VideoPlay from "./src/Screens/VideoPlayScreen";
 const Stack = createStackNavigator();
 
 export default function App() {
-
-  
-  
   return (
     <NavigationContainer>
-      
       <Stack.Navigator
         screenOptions={{
           headerBackTitleVisible: false,
@@ -34,7 +30,6 @@ export default function App() {
               color: "white"
             }
           }}
-          
         />
         <Stack.Screen
           name="Article"
@@ -48,7 +43,7 @@ export default function App() {
               fontWeight: "bold",
               color: "white",
               borderBottomColor: "transparent"
-            },
+            }
           }}
         />
         <Stack.Screen
@@ -67,7 +62,5 @@ export default function App() {
   );
 }
 
-//TODO: 
-//Fix FlatList.
+//TODO:
 //Add Sign in feature. Make optional and the benifit is getting updates when new stories update.
-

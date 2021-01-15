@@ -10,17 +10,21 @@ import {
   Image
 } from "react-native";
 
-import { Audio, Video } from "expo-av";
+import { Video } from "expo-av";
 import shareImage from "../assets/icons/share.png";
 import heartImage from "../assets/icons/chad.png";
 import * as firebase from "firebase";
 import { db } from "../firebase/firebase"
 
-const VideoPlayScreen = ({ route, navigation }) => {
+const VideoPlayScreen = ({ route }) => {
   const { videoText, videoSource, videoSummary, videoUid, videoSalute } = route.params;
+
+  //LINK AND APP LINK FOR SHARING
   const Link = { videoSource };
   const Url = "https://apps.apple.com/us/app/whatslegal/id1543793062"
 
+
+//SALUTE STATE AND FIREBASE INCREMENT FUNCTION
   const [domSalute, setDomSalute] = React.useState(Number(videoSalute));
   const increment = firebase.firestore.FieldValue.increment(1);
 
@@ -56,7 +60,7 @@ const VideoPlayScreen = ({ route, navigation }) => {
           {videoText}
           </Text>
 
-       
+        {/*LOWER HALF SCROLL*/}
       </ScrollView>
       <View
           style={{
@@ -84,14 +88,16 @@ const VideoPlayScreen = ({ route, navigation }) => {
             onPress={async function() {
               await Share.share({
                
-                message: {videoSource},
+                message: Link,
                 url: Url
               });
             }}
           >
             <Image style={{ width: 30, height: 30 }} source={shareImage} />
-          </TouchableOpacity>
-          {/*SALUTE (LIKE)BUTTON*/}
+        </TouchableOpacity>
+        
+        {/*SALUTE (LIKE)BUTTON*/}
+        
           <TouchableOpacity
             style={{
               backgroundColor: "black",

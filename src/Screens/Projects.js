@@ -43,7 +43,8 @@ const Projects = props => {
                
                
                         
-                        <FlatList
+                <FlatList
+                    style={{ padding: 40 }}
                             data={videos}
                             renderItem={({ item }) => {
                                 return (
