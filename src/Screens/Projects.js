@@ -51,14 +51,16 @@ const Projects = props => {
                                         props.navigation.navigate("VideoPlay", {
                                             videoText: `${item.des}`,
                                             videoSource: `${item.clip}`,
-                                            videoSummary:`${item.title}`
+                                            videoSummary: `${item.title}`,
+                                            videoUid: `${item.id}`,
+                                            videoSalute: `${item.salute}`
                                           })
                                         
                                     }}>
                                         <Card key={item.id}
                                             title={item.title}
                                             image={item.thumbnail}
-                                            salute={11}/>
+                                            salute={item.salute}/>
                                         
                                     </TouchableOpacity>
                                 )

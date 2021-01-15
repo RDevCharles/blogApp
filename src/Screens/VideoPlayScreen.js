@@ -13,10 +13,15 @@ import {
 import { Audio, Video } from "expo-av";
 import shareImage from "../assets/icons/share.png";
 import heartImage from "../assets/icons/chad.png";
+import * as firebase from "firebase";
+import { db } from "../firebase/firebase"
 
 const VideoPlayScreen = ({ route, navigation }) => {
-  // const { videoText, videoSource, videoSummary } = route.params;
-  // const Link = `${videoSource}`;
+  const { videoText, videoSource, videoSummary, videoUid, videoSalute } = route.params;
+  const Link = `${videoSource}`;
+
+  const [domSalute, setDomSalute] = React.useState(Number(videoSalute));
+  const increment = firebase.firestore.FieldValue.increment(1);
 
   return (
     <SafeAreaView
@@ -26,7 +31,7 @@ const VideoPlayScreen = ({ route, navigation }) => {
       }}
     >
     <Video
-        source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+        source={{ uri: `${videoSource}` }}
         useNativeControls={true}
     rate={1.0}
     volume={1.0}
@@ -38,16 +43,16 @@ const VideoPlayScreen = ({ route, navigation }) => {
       />
       
       <View style={styles.articleText}>
-          <Text style={{ color: "white" }}>This is a video summary</Text>
+          <Text style={{ color: "white" }}>{videoSummary}</Text>
           <Text style={{ margin: 10, color: "grey", fontSize: 12 }}>
-            Salutes:37
+            Salutes:{domSalute}
           </Text>
       </View>
       <ScrollView style={{backgroundColor: "black",}}>
           <Text
             style={{ padding: 20, color: "white", backgroundColor: "black", height:'auto' }}
           >
-            this is the test that will give a brief summary even though it is not a summary.
+          {videoText}
           </Text>
 
        
@@ -102,8 +107,8 @@ const VideoPlayScreen = ({ route, navigation }) => {
 
               return (
                 db
-                  .collection("articles")
-                  .doc(articleUid)
+                  .collection("videos")
+                  .doc(videoUid)
                   .update(
                     {
                       salute: increment
