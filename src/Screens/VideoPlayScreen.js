@@ -18,7 +18,8 @@ import { db } from "../firebase/firebase"
 
 const VideoPlayScreen = ({ route, navigation }) => {
   const { videoText, videoSource, videoSummary, videoUid, videoSalute } = route.params;
-  const Link = `${videoSource}`;
+  const Link = { videoSource };
+  const Url = "https://apps.apple.com/us/app/whatslegal/id1543793062"
 
   const [domSalute, setDomSalute] = React.useState(Number(videoSalute));
   const increment = firebase.firestore.FieldValue.increment(1);
@@ -82,8 +83,8 @@ const VideoPlayScreen = ({ route, navigation }) => {
             }}
             onPress={async function() {
               await Share.share({
-                subject: Link,
-                message: Link,
+               
+                message: {videoSource},
                 url: Url
               });
             }}
