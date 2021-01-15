@@ -70,13 +70,13 @@ const HomeScreen = () => {
           })}
         />
 <Tab.Screen
-          name="Video"
+          name="Videos"
           component={VideoList}
           options={({ route }) => ({
             tabBarIcon: ({ focused }) => {
               let iconName;
 
-              if (route.name === "Video") {
+              if (route.name === "Videos") {
                 iconName = focused ? videoIconFocused : videoIcon;
               }
               return (

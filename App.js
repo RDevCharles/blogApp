@@ -47,7 +47,7 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          name="VideoPlay"
+          name="WhatsLegal Video"
           component={VideoPlay}
           options={{
             headerStyle: { backgroundColor: "black" },

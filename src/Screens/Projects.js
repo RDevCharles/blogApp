@@ -49,7 +49,7 @@ const Projects = props => {
                             renderItem={({ item }) => {
                                 return (
                                     <TouchableOpacity key ={item.id} onPress={() => {
-                                        props.navigation.navigate("VideoPlay", {
+                                        props.navigation.navigate("WhatsLegal Video", {
                                             videoText: `${item.des}`,
                                             videoSource: `${item.clip}`,
                                             videoSummary: `${item.title}`,
