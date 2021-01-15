@@ -8,6 +8,8 @@ import VideoPlay from "./src/Screens/VideoPlayScreen";
 const Stack = createStackNavigator();
 
 export default function App() {
+
+  
   
   return (
     <NavigationContainer>
@@ -50,7 +52,7 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          name="Video"
+          name="VideoPlay"
           component={VideoPlay}
           options={{
             headerStyle: { backgroundColor: "black" },
