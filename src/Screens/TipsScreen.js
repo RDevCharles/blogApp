@@ -23,11 +23,11 @@ const TipsScreen = () => {
 
 
     return (
-        <SafeAreaView style={{flex:1, alignItems:'center', backgroundColor:"#191919"}}>
+        <SafeAreaView style={{flex:1, alignItems:'center', backgroundColor:"black"}}>
        
     
             <FlatList
-                style={{ padding: 40}}
+                
             data={tips}
             renderItem={({ item }) => {
                 return (
